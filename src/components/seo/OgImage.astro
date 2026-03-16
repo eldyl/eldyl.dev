@@ -1,0 +1,20 @@
+---
+// https://ogp.me/#structured
+interface Props {
+  url?: URL; // Identical to og:image.
+  secure_url?: URL; // An alternate url to use if the webpage requires HTTPS.
+  type?: string; // A MIME type for this image.
+  width?: number; // The number of pixels wide.
+  height?: number; // The number of pixels high.
+  alt?: string; // A description of what is in the image (not a caption).
+}
+
+const { url, secure_url, type, width, height, alt } = Astro.props;
+---
+
+{url && <meta property="og:image:url" content={url} />}
+{secure_url && <meta property="og:image:secure_url" content={secure_url} />}
+{type && <meta property="og:image:type" content={type} />}
+{width && <meta property="og:image:width" content={width.toString()} />}
+{height && <meta property="og:image:height" content={height.toString()} />}
+{alt && <meta property="og:image:alt" content={alt} />}

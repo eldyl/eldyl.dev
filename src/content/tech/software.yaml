@@ -1,0 +1,69 @@
+- slug: 0
+  title: Arch Linux
+  purpose: Operating System
+  description: I use Arch, btw.
+  href: https://wiki.archlinux.org/title/Main_page
+  location: archlinux.org
+  icon:
+    name: arch
+    color: "#1793D1"
+
+- slug: 1
+  title: WezTerm
+  purpose: Terminal
+  href: https://wezterm.org/
+  description: Built-in mux, written in Rust, and configurable with Lua.
+  location: wezterm.org
+  icon:
+    name: wezterm
+    color: "#4E49EE"
+
+- slug: 2
+  title: NeoVim
+  purpose: Editor
+  href: https://neovim.io/
+  description: Vim motions make flow-state easy. Lua makes it mine.
+  location: neovim.io
+  icon:
+    name: neovim
+    color: "#57A143"
+
+- slug: 3
+  title: Proxmox
+  purpose: Homelab
+  href: https://pve.proxmox.com/pve-docs/
+  description: The backbone of my homelab.
+  location: proxmox.com
+  icon:
+    name: proxmox
+    color: "#E57000"
+
+- slug: 4
+  title: TrueNAS Scale
+  purpose: Homelab
+  href: https://www.truenas.com/docs/scale
+  description: Don't forget 3-2-1.
+  location: truenas.com
+  icon:
+    name: truenas
+    color: "#0095D5"
+
+- slug: 5
+  title: Debian
+  purpose: Homelab
+  href: https://www.debian.org/doc/
+  description: Keep it simple, keep it stable.
+  location: debian.org
+  icon:
+    name: debian
+    color: "#A81D33"
+
+- slug: 6
+  title: Docker
+  purpose: Homelab
+  href: https://docs.docker.com/
+  description: It must be contained.
+  location: docker.com
+  icon:
+    name: docker
+    color: "#2496ED"

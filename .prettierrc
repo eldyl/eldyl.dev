@@ -1,0 +1,24 @@
+{
+  "proseWrap": "always",
+  "plugins": [
+    "prettier-plugin-astro",
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss"
+  ],
+  "importOrder": [
+    "<TYPES>",
+    "^(astro/(.*)$)|^(astro:(.*)$)|^(astro$)",
+    "^(astro(.*)$)|^(@astrojs(.*)$)",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "<TYPES>^[.|..|~|@]",
+    "^@/constants(.*)$",
+    "^@/layouts(.*)$",
+    "^@/components(.*)$",
+    "^@/utils(.*)$",
+    "^@/",
+    "^[../]",
+    "^[./]"
+  ],
+  "overrides": [{ "files": "*.astro", "options": { "parser": "astro" } }]
+}

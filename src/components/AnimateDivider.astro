@@ -1,0 +1,9 @@
+---
+import Divider from "@/components/Divider.astro";
+
+const { class: class_name, ...rest } = Astro.props;
+const component_class =
+  `animate-draw-line-200 w-0 opacity-0 ${class_name}`.trim();
+---
+
+<Divider class={component_class} {...rest} />

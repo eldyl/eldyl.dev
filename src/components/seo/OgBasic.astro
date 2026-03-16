@@ -1,0 +1,18 @@
+---
+// https://ogp.me/#metadata
+import type { OgType } from "./types";
+
+interface Props {
+  title?: string;
+  type?: OgType;
+  image?: URL;
+  url?: URL;
+}
+
+const { title, type, image, url } = Astro.props;
+---
+
+{title && <meta property="og:title" content={title} />}
+{type && <meta property="og:type" content={type} />}
+{image && <meta property="og:image" content={image} />}
+{url && <meta property="og:url" content={url} />}

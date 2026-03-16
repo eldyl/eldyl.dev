@@ -1,0 +1,25 @@
+---
+interface Props {
+  as?:
+    | "div"
+    | "span"
+    | "p"
+    | "li"
+    | "section"
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6";
+}
+
+const { as = "div", class: class_name, ...rest } = Astro.props;
+const component_class =
+  `group relative flex flex-col items-start ${class_name}`.trim();
+const Component = as;
+---
+
+<Component class={component_class} {...rest}>
+  <slot />
+</Component>

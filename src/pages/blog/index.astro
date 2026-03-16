@@ -1,0 +1,36 @@
+---
+import { getCollection } from "astro:content";
+
+import Layout from "@/layouts/Layout.astro";
+import BlogCard from "@/components/BlogCard.astro";
+
+const posts = (await getCollection("blog"))
+  .filter((post) => !post.data.draft)
+  .sort(
+    (a, b) =>
+      b.data.publication_date.valueOf() - a.data.publication_date.valueOf(),
+  );
+---
+
+<Layout h1="Blog">
+  {
+    posts.length ? (
+      <div class="md:border-l md:border-zinc-700/40 md:pl-6">
+        <div class="flex flex-col space-y-16">
+          {posts.map((post) => (
+            <BlogCard
+              title={post.data.title}
+              date={post.data.publication_date}
+              slug={post.id}
+              description={post.data.description}
+            />
+          ))}
+        </div>
+      </div>
+    ) : (
+      <p class="text-lg">
+        It looks like someone hasn't done any writing... yet.
+      </p>
+    )
+  }
+</Layout>

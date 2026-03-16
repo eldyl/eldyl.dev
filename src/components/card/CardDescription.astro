@@ -1,0 +1,9 @@
+---
+const { class: class_name, ...rest } = Astro.props;
+const component_class =
+  `relative z-10 mt-2 text-sm text-zinc-400 ${class_name}`.trim();
+---
+
+<p class={component_class} {...rest}>
+  <slot />
+</p>

@@ -1,0 +1,78 @@
+---
+import type { ComponentProps } from "astro/types";
+import { ANALYTICS_ID } from "astro:env/client";
+
+import { DOMAIN, MAX_TITLE_LENGTH, NAME } from "@/constants";
+import Meta from "@/components/Meta.astro";
+import SEO from "@/components/seo/SEO.astro";
+import { validate_page_title } from "@/utils";
+
+type SEOProps = ComponentProps<typeof SEO>;
+
+interface Props {
+  title?: string;
+  description?: string;
+  seo?: SEOProps;
+}
+
+const { title = "", description, seo = null } = Astro.props;
+
+const rendered_title = validate_page_title(title, NAME, MAX_TITLE_LENGTH);
+
+const pathname = Astro.url.pathname;
+const canonical_url = new URL(pathname, Astro.site);
+const og_slug =
+  pathname === "/" ? "about" : pathname.slice(1).replace(/\/$/, "");
+const og_image_url = new URL(`/api/og/${og_slug}.png`, Astro.site);
+---
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{rendered_title}</title>
+  {
+    ANALYTICS_ID && import.meta.env.MODE === "production" && (
+      <script
+        is:inline
+        defer
+        data-astro-rerun
+        src="/api/s.js"
+        data-website-id={ANALYTICS_ID}
+      />
+    )
+  }
+  <Meta
+    description={description}
+    icon="/favicon.svg"
+    color_scheme="normal"
+    theme_color="#101014"
+    canonical={canonical_url}
+    apple_mobile_web_app_title={DOMAIN}
+    robots="index, follow"
+  />
+  <SEO
+    og={{
+      ...seo?.og,
+      url: seo?.og?.url || canonical_url,
+      title: seo?.og?.title
+        ? `${seo?.og?.title} - ${NAME}`
+        : rendered_title || title,
+      type: seo?.og?.type || "website",
+      image: seo?.og?.image || og_image_url,
+      optional: {
+        ...seo?.og?.optional,
+        description: seo?.og?.optional?.description || description,
+        site_name: DOMAIN,
+      },
+    }}
+    twitter={{
+      ...seo?.twitter,
+      title: seo?.og?.title
+        ? `${seo?.og?.title} - ${NAME}`
+        : rendered_title || title,
+      description: seo?.twitter?.description || description,
+      image: seo?.twitter?.image || og_image_url,
+    }}
+  />
+  <slot />
+</head>

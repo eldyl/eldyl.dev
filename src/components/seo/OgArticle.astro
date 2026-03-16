@@ -1,0 +1,39 @@
+---
+// https://ogp.me/#type_article
+interface Props {
+  published_time?: string; // "2025-07-25"
+  modified_time?: string; // "2025-07-26"
+  expiration_time?: string; // "2025-12-26"
+  author?: string;
+  section?: string;
+  tags?: string[];
+}
+
+const {
+  published_time,
+  modified_time,
+  expiration_time,
+  author,
+  section,
+  tags,
+} = Astro.props;
+---
+
+{
+  published_time && (
+    <meta property="article:published_time" content={published_time} />
+  )
+}
+{
+  modified_time && (
+    <meta property="article:modified_time" content={modified_time} />
+  )
+}
+{
+  expiration_time && (
+    <meta property="article:expiration_time" content={expiration_time} />
+  )
+}
+{author && <meta property="article:author" content={author} />}
+{section && <meta property="article:section" content={section} />}
+{tags?.map((tag) => <meta property="article:tag" content={tag} />)}

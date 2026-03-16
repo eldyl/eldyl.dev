@@ -1,0 +1,63 @@
+---
+import { Icon } from "astro-icon/components";
+
+import type { TechEntry } from "@/zod";
+import Card from "@/components/card/Card.astro";
+import CardDescription from "@/components/card/CardDescription.astro";
+import CardEyebrow from "@/components/card/CardEyebrow.astro";
+import CardLink from "@/components/card/CardLink.astro";
+
+type Props = TechEntry;
+
+const { title, purpose, href, location, description, icon } = Astro.props;
+---
+
+<Card as="li">
+  <div
+    class="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border border-zinc-700/50 bg-zinc-800 shadow-md ring-0 shadow-zinc-800/5 ring-zinc-900/5"
+  >
+    {
+      icon ? (
+        <Icon
+          name={icon.name}
+          title={icon.name}
+          class="size-6 text-(--icon-color)"
+          style={`--icon-color: ${icon.color}`}
+        />
+      ) : (
+        <span class="size-6 text-center font-mono font-semibold text-zinc-200">
+          {title[0]}
+        </span>
+      )
+    }
+  </div>
+  <CardEyebrow as="span">
+    {purpose}
+  </CardEyebrow>
+  <span class="mt-6 text-base font-semibold text-zinc-100">
+    {
+      href ? (
+        <CardLink href={href} target="_blank" rel="noopener noreferrer">
+          <h3>{title}</h3>
+        </CardLink>
+      ) : (
+        <>
+          <div class="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-800/50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl" />
+          <h3 class="relative z-10">{title}</h3>
+        </>
+      )
+    }
+  </span>
+  <CardDescription class="mb-6">{description}</CardDescription>
+  {
+    location && (
+      <p
+        class="relative z-10 mt-auto flex items-center text-sm font-medium transition group-hover:text-(--icon-color)"
+        style={icon ? `--icon-color: ${icon.color}` : ``}
+      >
+        <Icon name="link" title="link" class="size-4 flex-none" />
+        <span class="ml-2">{location}</span>
+      </p>
+    )
+  }
+</Card>

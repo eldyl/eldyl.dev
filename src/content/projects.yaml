@@ -1,0 +1,49 @@
+- id: 0
+  title: restart-that-thang
+  abbreviation: RTT
+  href: https://github.com/eldyl/restart-that-thang
+  location: github.com
+  role: author
+  description:
+    Docker container orchestration tool written in Rust. Automates restarts
+    based on dependency graphs, health monitoring, intervals, and scheduled
+    times with label-based configuration.
+
+- id: 1
+  title: dsd-util
+  abbreviation: DSU
+  href: https://github.com/eldyl/dsd-util
+  location: github.com
+  role: author
+  description:
+    A CLI utility for managing docker-stack-deploy instances. Handles container
+    logs, image updates, restarts, stats, and bootstrapping.
+
+- id: 2
+  title: workspacinator
+  abbreviation: WSR
+  href: https://github.com/eldyl/workspacinator.wezterm
+  location: github.com
+  role: author
+  description:
+    A WezTerm plugin that generates workspaces from your favorite directories,
+    SSH domains, and currently active sessions. All in one fuzzy finder.
+
+- id: 3
+  title: .dotfiles
+  abbreviation: .DF
+  href: https://github.com/eldyl/.dotfiles
+  location: github.com
+  role: author
+  description:
+    "My development environment: Arch Linux, NeoVim, WezTerm, and more."
+
+- id: 4
+  title: homepage
+  abbreviation: HP
+  href: https://github.com/gethomepage/homepage
+  location: github.com
+  role: contributor
+  description:
+    A highly customizable homepage (or startpage / application dashboard) with
+    Docker and service API integrations.

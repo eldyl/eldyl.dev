@@ -1,0 +1,35 @@
+---
+interface Props {
+  as?:
+    | "div"
+    | "span"
+    | "p"
+    | "section"
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6";
+  decorate?: boolean;
+}
+
+const { as = "p", class: class_name, decorate = false, ...rest } = Astro.props;
+const component_class =
+  `relative z-10 order-first mb-3 flex items-center text-sm text-zinc-500 ${decorate && "pl-3.5"} ${class_name}`.trim();
+const Component = as;
+---
+
+<Component class={component_class} {...rest}>
+  {
+    decorate && (
+      <span
+        class="absolute inset-y-0 left-0 flex items-center"
+        aria-hidden="true"
+      >
+        <span class="h-4 w-0.5 rounded-full bg-zinc-500" />
+      </span>
+    )
+  }
+  <slot />
+</Component>

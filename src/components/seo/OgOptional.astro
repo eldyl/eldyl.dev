@@ -1,0 +1,34 @@
+---
+// https://ogp.me/#optional
+interface Props {
+  audio?: URL; // A URL to an audio file to accompany this object.
+  description?: string; // A one to two sentence description of your object.
+  determiner?: string; // The word that appears before this object's title in a sentence. An enum of (a, an, the, "", auto). If auto is chosen, the consumer of your data should choose between "a" or "an". Default is "" (blank).
+  locale?: string; // The locale these tags are marked up in. Of the format language_TERRITORY. Default is en_US.
+  locale_alternate?: string[]; // An array of other locales this page is available in.
+  site_name?: string; // If your object is part of a larger web site, the name which should be displayed for the overall site. e.g., "IMDb".
+  video?: URL; // A URL to a video file that complements this object.
+}
+
+const {
+  audio,
+  description,
+  determiner,
+  locale,
+  locale_alternate,
+  site_name,
+  video,
+} = Astro.props;
+---
+
+{audio && <meta property="og:audio" content={audio} />}
+{description && <meta property="og:description" content={description} />}
+{determiner && <meta property="og:determiner" content={determiner} />}
+{locale && <meta property="og:locale" content={locale} />}
+{
+  locale_alternate?.map((alt) => (
+    <meta property="og:locale:alternate" content={alt} />
+  ))
+}
+{site_name && <meta property="og:site_name" content={site_name} />}
+{video && <meta property="og:video" content={video} />}

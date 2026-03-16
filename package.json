@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "eldyl-dev",
+  "license": "GPL-3.0-only",
+  "description": "A minimal portfolio site built with Astro and Tailwind.",
+  "homepage": "https://eldyl.dev",
+  "repository": "https://github.com/eldyl/eldyl.dev",
+  "bugs": {
+    "url": "https://github.com/eldyl/eldyl.dev/issues"
+  },
+  "author": {
+    "name": "Dylan Ullrich",
+    "email": "dylan@eldyl.dev",
+    "url": "https://eldyl.dev"
+  },
+  "type": "module",
+  "version": "0.0.1",
+  "packageManager": "pnpm@10.29.2",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "pnpm run telemetry",
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "wrangler dev --port 4321",
+    "bp": "astro check && SITE_URL=http://localhost:4321 astro build && wrangler dev --port 4321",
+    "deploy-site": "astro check && astro build && wrangler deploy",
+    "astro": "astro",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint 'src/**/*.{js,ts,astro}'",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "telemetry": "astro telemetry disable && wrangler telemetry disable"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.8",
+    "@astrojs/cloudflare": "^12.6.13",
+    "@astrojs/sitemap": "^3.7.1",
+    "@playform/compress": "^0.2.2",
+    "@tailwindcss/vite": "^4.2.1",
+    "astro": "^5.18.1",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-slug": "^6.0.0",
+    "remark-toc": "^9.0.0",
+    "satori-astro": "^0.3.3",
+    "satori-html": "^0.3.2",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^4.2.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
+    "@tailwindcss/typography": "^0.5.19",
+    "@types/node": "^25.5.0",
+    "@typescript-eslint/parser": "^8.57.1",
+    "@vitest/coverage-v8": "^4.1.0",
+    "astro-icon": "^1.1.5",
+    "eslint": "^9.39.4",
+    "eslint-plugin-astro": "^1.6.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "prettier": "3.8.1",
+    "prettier-plugin-astro": "0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.57.1",
+    "vite": "^7.3.1",
+    "vitest": "^4.1.0",
+    "wrangler": "^4.74.0"
+  }
+}

@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+
+import Layout from "@/layouts/Layout.astro";
+import GridList from "@/components/GridList.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+
+const projects = await getCollection("projects");
+---
+
+<Layout h1="Projects">
+  <GridList header_text="Personal">
+    {
+      projects
+        .filter((p) => p.data.role === "author")
+        .map((p) => <ProjectCard {...p.data} />)
+    }
+  </GridList>
+  <GridList header_text="Contributor">
+    {
+      projects
+        .filter((p) => p.data.role === "contributor")
+        .map((p) => <ProjectCard {...p.data} />)
+    }
+  </GridList>
+</Layout>

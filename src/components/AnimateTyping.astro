@@ -1,0 +1,123 @@
+---
+interface Props {
+  // HTML element type
+  as?:
+    | "div"
+    | "span"
+    | "p"
+    | "section"
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6";
+  // Rendered text
+  text: string;
+  // Color of cursor - set with tailwind bg color: bg-gray-200
+  cursor_color?: string;
+  // Component render delay
+  start_delay?: number;
+  // Speed of typing animation - lower is faster
+  typing_delay?: number;
+  // Speed of cursor blink - higher is faster
+  blink_speed?: number;
+}
+
+let {
+  as = "div",
+  text,
+  cursor_color = "bg-gray-200",
+  class: class_name,
+  start_delay = 0,
+  typing_delay = 1,
+  blink_speed = 1,
+  ...rest
+} = Astro.props;
+
+typing_delay *= 0.1;
+blink_speed *= 1;
+
+const Component = as;
+---
+
+<Component class={class_name} {...rest}>
+  <span class={`relative inline-block min-w-[${text.length + 1}ch]`}>
+    <span class="invisible" aria-hidden="true">&nbsp;</span>
+    <span class="absolute top-0 left-0" aria-hidden="true">
+      {
+        text.split("").map((char: string, index: number) => {
+          const is_last_char = index === text.length - 1;
+          const char_delay = start_delay + index * typing_delay;
+          const next_char_delay = start_delay + (index + 1) * typing_delay;
+          return (
+            <span
+              class="char-animate relative inline-block"
+              style={`--char-delay: ${char_delay}s;`}
+              aria-hidden="true"
+            >
+              {char === " " ? "\u00A0" : char}
+              <span
+                class={`absolute top-0 left-full h-full w-[1ch] opacity-0 ${cursor_color} ${is_last_char ? "cursor-final" : "cursor-temp"}`}
+                style={`--blink-speed: ${blink_speed}s; --hide-delay: ${next_char_delay}s;`}
+                aria-hidden="true"
+              />
+            </span>
+          );
+        })
+      }
+    </span>
+  </span>
+</Component>
+
+<style>
+  .char-animate {
+    animation: typewriter 0.1s ease-in var(--char-delay) both;
+  }
+
+  .cursor-final {
+    animation:
+      cursor-appear 0.1s ease-in var(--char-delay) both,
+      cursor-blink var(--blink-speed) infinite var(--char-delay);
+  }
+
+  .cursor-temp {
+    animation:
+      cursor-appear 1ms ease-in var(--char-delay) both,
+      cursor-hide 0.1s ease-in var(--hide-delay) both;
+  }
+
+  @keyframes typewriter {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes cursor-appear {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes cursor-hide {
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes cursor-blink {
+    0%,
+    50% {
+      opacity: 1;
+    }
+    51%,
+    100% {
+      opacity: 0;
+    }
+  }
+</style>

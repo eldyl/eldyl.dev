@@ -1,0 +1,35 @@
+---
+import { Icon } from "astro-icon/components";
+
+import type { ProjectEntry } from "@/zod";
+import Card from "@/components/card/Card.astro";
+import CardDescription from "@/components/card/CardDescription.astro";
+import CardLink from "@/components/card/CardLink.astro";
+
+type Props = ProjectEntry;
+
+const { title, abbreviation, href, location, description } = Astro.props;
+---
+
+<Card as="li">
+  <div
+    class="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border border-zinc-700/50 bg-zinc-800 shadow-md ring-0 shadow-zinc-800/5 ring-zinc-900/5"
+  >
+    <span
+      class="group-hover:text-accent-bright font-mono text-lg font-semibold text-zinc-200"
+      >{abbreviation}</span
+    >
+  </div>
+  <h2 class="mt-6 text-base font-semibold text-zinc-100">
+    <CardLink href={href} target="_blank" rel="noopener noreferrer"
+      >{title}</CardLink
+    >
+  </h2>
+  <CardDescription>{description}</CardDescription>
+  <p
+    class="group-hover:text-accent-bright relative z-10 mt-auto flex items-center pt-6 text-sm font-medium text-zinc-200 transition"
+  >
+    <Icon name="link" title="link" class="size-4 flex-none" />
+    <span class="ml-2">{location}</span>
+  </p>
+</Card>

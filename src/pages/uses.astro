@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+
+import Layout from "@/layouts/Layout.astro";
+import GridList from "@/components/GridList.astro";
+import TechCard from "@/components/TechCard.astro";
+
+const software = await getCollection("tech_software");
+const languages = await getCollection("tech_language");
+---
+
+<Layout h1="Tech I use">
+  <GridList
+    header_text="The Foundation"
+    subheader_text="Some of the software I interact with regularly."
+  >
+    {software.map((s) => <TechCard {...s.data} />)}
+  </GridList>
+  <GridList
+    header_text="Languages"
+    subheader_text="Some of the languages I've been using recently."
+  >
+    {languages.map((l) => <TechCard {...l.data} />)}
+  </GridList>
+</Layout>

@@ -1,0 +1,79 @@
+---
+import { normalize_path } from "@/utils";
+
+const path = Astro.url.pathname as string;
+const segments = path.slice(1).split("/").filter(Boolean);
+const pages = segments.map((segment, index) => {
+  const href = `/${segments.slice(0, index + 1).join("/")}`;
+  return { href, name: segment };
+});
+
+const { class: class_name, ...rest } = Astro.props;
+---
+
+<div class={class_name} {...rest}>
+  {
+    (
+      <div class="flex w-full font-mono">
+        <span class="text-accent" aria-hidden="true">
+          {"["}
+        </span>
+        <span aria-hidden="true" class="text-blue-100/80">
+          {"eldyl@dev"}
+        </span>
+        <span class="text-accent pr-2" aria-hidden="true">
+          {"]"}
+        </span>
+        <span class="text-accent" aria-hidden="true">
+          {"["}
+        </span>
+        {pages.length === 0 ? (
+          <span class="text-blue-100/80">{"~"}</span>
+        ) : (
+          <div class="max-w-full min-w-0">
+            <nav aria-label="Breadcrumb" class="min-w-0 text-blue-100/80">
+              <ol class="flex w-full items-center space-x-4 px-4">
+                <li>
+                  <div class="">
+                    <a href="/" class="hover:text-gray-700">
+                      {"~"}
+                      <span class="sr-only">Home</span>
+                    </a>
+                  </div>
+                </li>
+                {pages.map((page, index) => (
+                  <li class={index === pages.length - 1 ? "min-w-0" : ""}>
+                    <div class="flex items-center space-x-4">
+                      <span aria-hidden="true">{" / "}</span>
+                      <a
+                        href={page.href}
+                        aria-current={
+                          normalize_path(path) === normalize_path(page.href)
+                            ? "page"
+                            : undefined
+                        }
+                        class={
+                          index === pages.length - 1
+                            ? "cursor-text truncate"
+                            : "hover:text-gray-700"
+                        }
+                      >
+                        {page.name}
+                      </a>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          </div>
+        )}
+        <span class="text-accent pr-2" aria-hidden="true">
+          {"]"}
+        </span>
+        <span class="text-accent pr-2" aria-hidden="true">
+          {">"}
+        </span>
+      </div>
+    )
+  }
+</div>

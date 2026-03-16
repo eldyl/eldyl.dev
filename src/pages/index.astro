@@ -1,0 +1,51 @@
+---
+import { NAME } from "@/constants";
+import Layout from "@/layouts/Layout.astro";
+import AnimateDivider from "@/components/AnimateDivider.astro";
+import AnimateTyping from "@/components/AnimateTyping.astro";
+import TerminalPS from "@/components/TerminalPS.astro";
+---
+
+<Layout>
+  <div class="@container mx-auto max-w-md sm:max-w-xl">
+    <h1
+      class="mb-6 text-center text-[16.6cqw] leading-tight font-bold tracking-tight sm:mb-10 sm:text-[15.75cqw]"
+    >
+      {NAME}
+    </h1>
+  </div>
+  <div class="@container mx-auto mb-8 max-w-md sm:mb-12">
+    <div
+      class="mb-8 flex items-center self-start text-[4.65cqw] text-nowrap sm:mb-12"
+    >
+      <TerminalPS aria-label="Terminal prompt string: eldyl@dev" />
+      <AnimateTyping
+        as="h2"
+        text="Software Engineer"
+        start_delay={1}
+        class="font-mono text-blue-100/80"
+        aria-label="Software Engineer"
+      />
+    </div>
+    <AnimateDivider />
+  </div>
+  <section
+    class="mx-auto flex max-w-md flex-col gap-y-6 text-justify text-base leading-relaxed text-blue-100/80 sm:text-xl"
+  >
+    <p>
+      Hello! I'm currently working on a Master's degree in Computer Science at
+      Northeastern University. I'm an Army Veteran, and a self-taught Software
+      Engineer.
+    </p>
+    <p>
+      I have created web applications, mobile applications, web APIs, CLIs,
+      terminal plugins, container orchestration tools, and more.
+    </p>
+    <p>
+      Curiosity drives my career, and programming is my passion. I enjoy going
+      deep, and learning how systems work at the lowest level. "That's just how
+      the sausage is made" doesn't cut it for me. This drive has led me to
+      explore systems at every level of the stack.
+    </p>
+  </section>
+</Layout>

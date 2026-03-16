@@ -1,0 +1,68 @@
+- id: 0
+  title: Rust
+  description: My favorite language. Fast, and memory safe.
+  href: https://doc.rust-lang.org/book/
+  location: rust-lang.org
+  icon:
+    name: "rust"
+    color: "#000000"
+
+- id: 1
+  title: C
+  href: https://www.iso.org/standard/82075.html
+  description: For when I want to live dangerously.
+  location: iso.org
+  icon:
+    name: "c"
+    color: "#A8B9CC"
+
+- id: 2
+  title: TypeScript
+  href: https://www.typescriptlang.org/docs/
+  description:
+    Sometimes it's the right tool for the job, and types are good for your
+    health (even without runtime checks).
+  location: typescriptlang.org
+  icon:
+    name: "typescript"
+    color: "#3178C6"
+
+- id: 3
+  title: Java
+  href: https://docs.oracle.com/en/java/javase/
+  description: It gets the job done.
+  location: oracle.com
+  icon:
+    name: "java"
+    color: "#0074BD"
+
+- id: 4
+  title: C#
+  href: https://learn.microsoft.com/en-us/dotnet/csharp/
+  description: Java++.
+  location: microsoft.com
+  icon:
+    name: "csharp"
+    color: "#9B4F96"
+
+- id: 5
+  title: Python
+  href: https://docs.python.org
+  description: Script army knife.
+  location: python.org
+  icon:
+    name: "python"
+    color: "#3776AB"
+
+- id: 6
+  title: Lua
+  href: https://www.lua.org/docs.html
+  description: Simple and fun. Great for configuration and embedding.
+  location: lua.org
+  icon:
+    name: "lua"
+    color: "#2C2D72"
+
+- id: 7
+  title: Wildcard
+  description: Throw it at me, and I'll learn it.

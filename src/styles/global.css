@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-background: #101014;
+  --color-subheading: var(--color-zinc-400);
+  --color-accent: color-mix(in oklab, var(--color-cyan-500) 40%, transparent);
+  --color-accent-faded: color-mix(
+    in oklab,
+    var(--color-cyan-500) 20%,
+    transparent
+  );
+  --color-accent-bright: var(--color-teal-500);
+  --animate-draw-line-200: draw-line 0.8s ease-out 0.2s forwards;
+}
+
+@keyframes draw-line {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}

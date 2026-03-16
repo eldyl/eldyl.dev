@@ -1,0 +1,7 @@
+---
+const { class: class_name, ...rest } = Astro.props;
+const component_class =
+  `mx-auto h-0.5 max-w-full bg-accent ${class_name}`.trim();
+---
+
+<div class={component_class} {...rest}></div>

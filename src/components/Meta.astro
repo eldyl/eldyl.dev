@@ -1,0 +1,51 @@
+---
+interface Props {
+  // https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meta#examples
+  description?: string;
+  // icon path
+  icon?: string;
+  // https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meta/name/color-scheme
+  color_scheme?:
+    | "normal"
+    | "light"
+    | "dark"
+    | "light dark"
+    | "dark light"
+    | "only light";
+  // https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meta/name/theme-color
+  theme_color?: string;
+  // Canonical url of page
+  canonical?: URL;
+  // default title when saved as apple mobile web app
+  apple_mobile_web_app_title?: string;
+  // https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meta/name/robots
+  robots?: string;
+}
+
+const {
+  description,
+  icon,
+  color_scheme,
+  theme_color,
+  canonical,
+  apple_mobile_web_app_title,
+  robots,
+} = Astro.props;
+---
+
+{description && <meta name="description" content={description} />}
+{icon && <link rel="icon" type="image/svg+xml" href={icon} />}
+{color_scheme && <meta name="color-scheme" content={color_scheme} />}
+{theme_color && <meta name="theme-color" content={theme_color} />}
+{
+  apple_mobile_web_app_title && (
+    <meta
+      name="apple-mobile-web-app-title"
+      content={apple_mobile_web_app_title}
+    />
+  )
+}
+{canonical && <link rel="canonical" href={canonical} />}
+{robots && <meta name="robots" content={robots} />}
+<meta name="generator" content={Astro.generator} />
+<slot />

@@ -1,0 +1,35 @@
+---
+import type { ComponentProps } from "astro/types";
+
+import OgArticle from "./OgArticle.astro";
+import OgBasic from "./OgBasic.astro";
+import OgImage from "./OgImage.astro";
+import OgOptional from "./OgOptional.astro";
+import Twitter from "./Twitter.astro";
+
+type OgBasicProps = ComponentProps<typeof OgBasic>;
+type OgOptionalProps = ComponentProps<typeof OgOptional>;
+type OgImageProps = ComponentProps<typeof OgImage>;
+type OgArticleProps = ComponentProps<typeof OgArticle>;
+type TwitterProps = ComponentProps<typeof Twitter>;
+
+interface Og extends OgBasicProps {
+  optional?: OgOptionalProps;
+  image_structured?: OgImageProps;
+  article?: OgArticleProps;
+}
+
+interface Props {
+  og?: Og;
+  twitter?: TwitterProps;
+}
+
+const { og, twitter } = Astro.props;
+const { article, optional, image_structured, ...ogProps } = og ?? {};
+---
+
+<OgBasic {...ogProps} />
+<OgOptional {...optional} />
+<OgImage {...image_structured} />
+<OgArticle {...article} />
+<Twitter {...twitter} />

@@ -1,0 +1,37 @@
+---
+interface Props {
+  header_text: string;
+  header_as?: "h1" | "h2" | "h3" | "h4" | "h5";
+  subheader_text?: string;
+  subheader_as?: "p" | "span";
+  list_as?: "ul" | "ol";
+}
+
+const {
+  header_text,
+  header_as = "h2",
+  subheader_text,
+  subheader_as = "p",
+  list_as = "ul",
+} = Astro.props;
+const Heading = header_as;
+const SubHeading = subheader_as;
+const List = list_as;
+---
+
+<Heading class="mt-16 text-2xl font-bold tracking-tight sm:mt-20 sm:text-3xl"
+  >{header_text}</Heading
+>
+{
+  subheader_text && (
+    <SubHeading class="text-subheading mt-4 text-base">
+      {subheader_text}
+    </SubHeading>
+  )
+}
+<List
+  role="list"
+  class="mt-16 grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
+>
+  <slot />
+</List>

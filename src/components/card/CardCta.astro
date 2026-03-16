@@ -1,0 +1,12 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { class: class_name, ...rest } = Astro.props;
+const component_class =
+  `relative z-10 mt-4 flex items-center text-sm font-medium text-accent-bright ${class_name}`.trim();
+---
+
+<div class={component_class} {...rest}>
+  <slot />
+  <Icon name="chevron-right" class="ml-1 h-4 w-4 stroke-current" />
+</div>

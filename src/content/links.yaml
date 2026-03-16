@@ -1,0 +1,11 @@
+- id: 0
+  name: github
+  href: https://github.com/eldyl
+
+- id: 1
+  name: linkedin
+  href: https://linkedin.com/in/dsullrich
+
+- id: 2
+  name: email
+  href: mailto:dylan@eldyl.dev

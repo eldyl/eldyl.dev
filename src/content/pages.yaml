@@ -1,0 +1,28 @@
+- id: about
+  order: 0
+  href: /
+  title: About
+  description:
+    Hello! I'm currently working on a Master's degree in Computer Science at
+    Northeastern University. I'm an Army Veteran, and a self-taught Software
+    Engineer.
+
+- id: blog
+  order: 1
+  href: /blog
+  title: Blog
+  description:
+    I enjoy writing about software development, Linux, and technology at large.
+    Sometimes posts are notes to myself, sometimes something more.
+
+- id: projects
+  order: 2
+  href: /projects
+  title: Projects
+  description: I love solving problems, and open source software.
+
+- id: uses
+  order: 3
+  href: /uses
+  title: Uses
+  description: A non-exhaustive list of some of the tools, and languages I use.

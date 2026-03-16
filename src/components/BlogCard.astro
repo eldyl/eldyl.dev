@@ -1,0 +1,33 @@
+---
+import Card from "@/components/card/Card.astro";
+import CardCta from "@/components/card/CardCta.astro";
+import CardDescription from "@/components/card/CardDescription.astro";
+import CardEyebrow from "@/components/card/CardEyebrow.astro";
+import CardTitle from "@/components/card/CardTitle.astro";
+import { format_date } from "@/utils";
+
+interface Props {
+  title: string;
+  slug: string;
+  date: Date;
+  description: string;
+}
+
+const { title, slug, date, description } = Astro.props;
+---
+
+<article class="md:grid md:grid-cols-4 md:items-baseline">
+  <Card class="md:col-span-3">
+    <CardTitle href={`/blog/${slug}`}>
+      {title}
+    </CardTitle>
+    <CardEyebrow as="time" dateTime={date} class="md:hidden" decorate>
+      {format_date(date)}
+    </CardEyebrow>
+    <CardDescription>{description}</CardDescription>
+    <CardCta>Read article</CardCta>
+  </Card>
+  <CardEyebrow as="time" dateTime={date} class="mt-1 max-md:hidden">
+    {format_date(date)}
+  </CardEyebrow>
+</article>

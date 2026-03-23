@@ -1,5 +1,6 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
 import { file, glob } from "astro/loaders";
+import { z } from "astro/zod";
 
 import {
   MAX_DESCRIPTION_LENGTH,
@@ -42,7 +43,7 @@ const links = defineCollection({
   loader: file("./src/content/links.yaml"),
   schema: z.object({
     name: z.string(),
-    href: z.string().url(),
+    href: z.url(),
   }),
 });
 

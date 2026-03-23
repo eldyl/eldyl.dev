@@ -1,9 +1,9 @@
-import { z } from "astro:content";
+import { z } from "astro/zod";
 
 const ProjectEntrySchema = z.object({
   title: z.string(),
   abbreviation: z.string().min(1).max(3),
-  href: z.string().url(),
+  href: z.url(),
   location: z.string(),
   role: z.enum(["author", "contributor"]),
   description: z.string(),
@@ -13,7 +13,7 @@ type ProjectEntry = z.infer<typeof ProjectEntrySchema>;
 const TechEntrySchema = z.object({
   title: z.string(),
   purpose: z.string().optional(),
-  href: z.string().url().optional(),
+  href: z.url().optional(),
   location: z.string().optional(),
   description: z.string(),
   icon: z

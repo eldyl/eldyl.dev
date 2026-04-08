@@ -1,5 +1,5 @@
 User-Agent: *
-Content-Signal: ai-train=no, search=yes, ai-input=no
+Content-Signal: ai-train=no, search=yes, ai-input=yes
 Allow: /
 Disallow: /api/
 Sitemap: https://eldyl.dev/sitemap-index.xml

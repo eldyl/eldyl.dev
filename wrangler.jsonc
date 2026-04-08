@@ -1,15 +1,15 @@
 {
-	"$schema": "./node_modules/wrangler/config-schema.json",
-	"name": "eldyl-dev",
-	"compatibility_date": "2025-12-27",
-	"assets": {
-		"directory": "./dist",
-		"html_handling": "drop-trailing-slash",
-	},
-	"routes": [
-		{
-			"pattern": "eldyl.dev",
-			"custom_domain": true,
-		},
-	],
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "eldyl-dev",
+  "compatibility_date": "2025-12-27",
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "drop-trailing-slash"
+  },
+  "routes": [
+    {
+      "pattern": "eldyl.dev",
+      "custom_domain": true
+    }
+  ]
 }

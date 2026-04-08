@@ -117,9 +117,9 @@ test("validate_page_title throws when suffix is over max_title_length", () => {
   const title = generate_string_of_char_with_length("X", 5);
   const suffix = generate_string_of_char_with_length("X", 61);
 
-  expect(() =>
-    validate_page_title(title, suffix, MAX_TITLE_LENGTH),
-  ).toThrowError("suffix");
+  expect(() => validate_page_title(title, suffix, MAX_TITLE_LENGTH)).toThrow(
+    "suffix",
+  );
 });
 
 test("validate_page_title correct return on happy path", () => {

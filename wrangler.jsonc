@@ -4,12 +4,12 @@
   "compatibility_date": "2025-12-27",
   "assets": {
     "directory": "./dist",
-    "html_handling": "drop-trailing-slash",
+    "html_handling": "drop-trailing-slash"
   },
   "routes": [
     {
       "pattern": "eldyl.dev",
-      "custom_domain": true,
-    },
-  ],
+      "custom_domain": true
+    }
+  ]
 }

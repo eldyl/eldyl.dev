@@ -32,7 +32,6 @@ export default defineConfig({
   integrations: [icon(), sitemap(), playformCompress()],
 
   vite: {
-    // @ts-expect-error vite tailwind plugin issue
     plugins: [tailwindcss()],
   },
 
@@ -60,7 +59,9 @@ export default defineConfig({
     },
   },
 
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    prerenderEnvironment: "node",
+  }),
 
   devToolbar: {
     enabled: false,

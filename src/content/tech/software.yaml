@@ -9,6 +9,16 @@
     color: "#1793D1"
 
 - slug: 1
+  title: NixOS
+  purpose: Operating System
+  description: What even is Nix?
+  href: https://discourse.nixos.org/ 
+  location: nixos.org
+  icon:
+    name: nixos 
+    color: "#5277C3"
+
+- slug: 2
   title: WezTerm
   purpose: Terminal
   href: https://wezterm.org/
@@ -18,7 +28,7 @@
     name: wezterm
     color: "#4E49EE"
 
-- slug: 2
+- slug: 3
   title: NeoVim
   purpose: Editor
   href: https://neovim.io/
@@ -28,7 +38,7 @@
     name: neovim
     color: "#57A143"
 
-- slug: 3
+- slug: 4
   title: Proxmox
   purpose: Homelab
   href: https://pve.proxmox.com/pve-docs/
@@ -38,7 +48,7 @@
     name: proxmox
     color: "#E57000"
 
-- slug: 4
+- slug: 5
   title: TrueNAS Scale
   purpose: Homelab
   href: https://www.truenas.com/docs/scale
@@ -48,7 +58,7 @@
     name: truenas
     color: "#0095D5"
 
-- slug: 5
+- slug: 6
   title: Debian
   purpose: Homelab
   href: https://www.debian.org/doc/
@@ -58,7 +68,7 @@
     name: debian
     color: "#A81D33"
 
-- slug: 6
+- slug: 7
   title: Docker
   purpose: Homelab
   href: https://docs.docker.com/

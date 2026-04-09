@@ -1,0 +1,40 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    groups:
+      astro:
+        patterns:
+          - "astro*"
+          - "@astrojs/*"
+          - "satori*"
+      tailwind:
+        patterns:
+          - "tailwindcss"
+          - "@tailwindcss/*"
+      eslint:
+        patterns:
+          - "eslint*"
+          - "@eslint/*"
+          - "*eslint*"
+          - "@typescript-eslint/*"
+          - "typescript-eslint"
+      prettier:
+        patterns:
+          - "*prettier*"
+      testing:
+        patterns:
+          - "vitest"
+          - "@vitest/*"
+      rehype-remark:
+        patterns:
+          - "rehype-*"
+          - "remark-*"
+      typescript:
+        patterns:
+          - "typescript"
+          - "@types/*"

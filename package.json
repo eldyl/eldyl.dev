@@ -37,7 +37,7 @@
     "@astrojs/cloudflare": "^13.1.8",
     "@astrojs/sitemap": "^3.7.2",
     "@astrojs/ts-plugin": "^1.10.7",
-    "@playform/compress": "^0.2.2",
+    "@playform/compress": "^0.2.3",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.1.5",
     "rehype-autolink-headings": "^7.1.0",

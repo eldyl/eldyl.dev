@@ -21,6 +21,8 @@ const rendered_title = validate_page_title(title, NAME, MAX_TITLE_LENGTH);
 
 const pathname = Astro.url.pathname;
 const canonical_url = new URL(pathname, Astro.site);
+
+const og_title = seo?.og?.title ? `${seo.og.title} - ${NAME}` : rendered_title;
 const og_slug =
   pathname === "/" ? "about" : pathname.slice(1).replace(/\/$/, "");
 const og_image_url = new URL(`/api/og/${og_slug}.png`, Astro.site);
@@ -53,25 +55,21 @@ const og_image_url = new URL(`/api/og/${og_slug}.png`, Astro.site);
   <SEO
     og={{
       ...seo?.og,
-      url: seo?.og?.url || canonical_url,
-      title: seo?.og?.title
-        ? `${seo?.og?.title} - ${NAME}`
-        : rendered_title || title,
-      type: seo?.og?.type || "website",
-      image: seo?.og?.image || og_image_url,
+      url: seo?.og?.url ?? canonical_url,
+      title: og_title,
+      type: seo?.og?.type ?? "website",
+      image: seo?.og?.image ?? og_image_url,
       optional: {
         ...seo?.og?.optional,
-        description: seo?.og?.optional?.description || description,
+        description: seo?.og?.optional?.description ?? description,
         site_name: DOMAIN,
       },
     }}
     twitter={{
       ...seo?.twitter,
-      title: seo?.og?.title
-        ? `${seo?.og?.title} - ${NAME}`
-        : rendered_title || title,
-      description: seo?.twitter?.description || description,
-      image: seo?.twitter?.image || og_image_url,
+      title: og_title,
+      description: seo?.twitter?.description ?? description,
+      image: seo?.twitter?.image ?? og_image_url,
     }}
   />
   <slot />

@@ -1,7 +1,7 @@
 import type { CollectionEntry } from "astro:content";
 import { expect, test } from "vitest";
 
-import { get_page_entry } from "./index.ts";
+import { get_page_entry } from "@/utils/collections";
 
 const mock_pages: Array<CollectionEntry<"pages">> = [
   {

@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 
-import { normalize_path } from "./index.ts";
+import { normalize_path } from "@/utils";
 
 test("normalize_path returns root if only root path", () => {
   expect(normalize_path("/")).toBe("/");

@@ -1,8 +1,6 @@
 import type { CollectionEntry } from "astro:content";
 
-// Viteest has an issue with TS aliases so path most be given without alias for
-// the purpose of testing
-import { EXCLUDED_DURING_PAGES_COLLECTION_VALIDATION } from "../../constants";
+import { EXCLUDED_DURING_PAGES_COLLECTION_VALIDATION } from "@/constants";
 
 // Validate that a page has an associated entry in the 'pages' collection that
 // provides page meta data.

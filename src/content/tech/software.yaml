@@ -12,10 +12,10 @@
   title: NixOS
   purpose: Operating System
   description: What even is Nix?
-  href: https://discourse.nixos.org/ 
+  href: https://discourse.nixos.org/
   location: nixos.org
   icon:
-    name: nixos 
+    name: nixos
     color: "#5277C3"
 
 - slug: 2

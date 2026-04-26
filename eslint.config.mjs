@@ -26,7 +26,7 @@ const tsRules = {
     { checksVoidReturn: false },
   ],
 
-  "@typescript-eslint/prefer-nullish-coalescing": "warn",
+  "@typescript-eslint/prefer-nullish-coalescing": "error",
 
   "@typescript-eslint/prefer-optional-chain": "warn",
 

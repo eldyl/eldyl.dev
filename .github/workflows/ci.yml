@@ -12,6 +12,9 @@ concurrency:
 permissions:
   contents: read
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   ci:
     runs-on: ubuntu-latest
@@ -31,4 +34,3 @@ jobs:
       - run: pnpm build
         env:
           SITE_URL: https://eldyl.dev
-          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true

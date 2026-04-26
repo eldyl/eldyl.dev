@@ -29,3 +29,5 @@ jobs:
       - run: pnpm lint
       - run: pnpm test
       - run: pnpm build
+        env:
+          SITE_URL: https://eldyl.dev

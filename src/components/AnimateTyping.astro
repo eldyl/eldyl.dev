@@ -20,7 +20,7 @@ interface Props {
   start_delay?: number;
   // Speed of typing animation - lower is faster
   typing_delay?: number;
-  // Speed of cursor blink - higher is faster
+  // Speed of cursor blink - lower is faster
   blink_speed?: number;
 }
 
@@ -31,12 +31,12 @@ let {
   class: class_name,
   start_delay = 0,
   typing_delay = 1,
-  blink_speed = 1,
+  blink_speed = 10,
   ...rest
 } = Astro.props;
 
 typing_delay *= 0.1;
-blink_speed *= 1;
+blink_speed *= 0.1;
 
 const Component = as;
 ---

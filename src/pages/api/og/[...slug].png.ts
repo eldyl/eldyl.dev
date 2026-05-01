@@ -4,10 +4,11 @@ import { satoriAstroOG } from "satori-astro";
 import { html } from "satori-html";
 
 import { DOMAIN, NAME } from "@/constants";
+import { get_published_blog_posts } from "@/utils/collections";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const pages = await getCollection("pages");
-  const posts = await getCollection("blog");
+  const posts = await get_published_blog_posts();
 
   const static_pages = pages.map((page) => ({
     params: { slug: page.id },

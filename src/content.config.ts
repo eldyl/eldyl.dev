@@ -19,7 +19,7 @@ const blog = defineCollection({
       .string()
       .min(MIN_DESCRIPTION_LENGTH)
       .max(MAX_DESCRIPTION_LENGTH),
-    tags: z.array(z.string()),
+    tags: z.array(z.string()).optional(),
     draft: z.boolean().default(false),
     publication_date: z.coerce.date(),
     revision_date: z.coerce.date().optional(),

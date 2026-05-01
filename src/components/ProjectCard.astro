@@ -20,11 +20,11 @@ const { title, abbreviation, href, location, description } = Astro.props;
       >{abbreviation}</span
     >
   </div>
-  <h2 class="mt-6 text-base font-semibold text-zinc-100">
+  <h3 class="mt-6 text-base font-semibold text-zinc-100">
     <CardLink href={href} target="_blank" rel="noopener noreferrer"
       >{title}</CardLink
     >
-  </h2>
+  </h3>
   <CardDescription>{description}</CardDescription>
   <p
     class="group-hover:text-accent-bright relative z-10 mt-auto flex items-center pt-6 text-sm font-medium text-zinc-200 transition"

@@ -1,15 +1,9 @@
 ---
-import { getCollection } from "astro:content";
-
 import Layout from "@/layouts/Layout.astro";
 import BlogCard from "@/components/BlogCard.astro";
+import { get_published_blog_posts } from "@/utils/collections";
 
-const posts = (await getCollection("blog"))
-  .filter((post) => !post.data.draft)
-  .sort(
-    (a, b) =>
-      b.data.publication_date.valueOf() - a.data.publication_date.valueOf(),
-  );
+const posts = await get_published_blog_posts();
 ---
 
 <Layout h1="Blog">

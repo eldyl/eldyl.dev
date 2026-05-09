@@ -49,7 +49,8 @@ const Component = as;
         text.split("").map((char: string, index: number) => {
           const is_last_char = index === text.length - 1;
           const char_delay = start_delay + index * typing_delay_seconds;
-          const next_char_delay = start_delay + (index + 1) * typing_delay_seconds;
+          const next_char_delay =
+            start_delay + (index + 1) * typing_delay_seconds;
           return (
             <span
               class="char-animate relative inline-block"

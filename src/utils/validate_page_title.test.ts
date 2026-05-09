@@ -1,7 +1,7 @@
 import { expect, test } from "vitest";
 
-import { MAX_TITLE_LENGTH } from "../constants/index.ts";
-import { validate_page_title } from "./index.ts";
+import { MAX_TITLE_LENGTH } from "@/constants";
+import { validate_page_title } from "@/utils";
 
 function generate_string_of_char_with_length(
   char: string,

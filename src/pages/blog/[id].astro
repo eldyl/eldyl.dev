@@ -1,16 +1,15 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { getCollection, render } from "astro:content";
+import { render } from "astro:content";
 
 import Layout from "@/layouts/Layout.astro";
 import Divider from "@/components/Divider.astro";
 import TerminalPS from "@/components/TerminalPS.astro";
 import { format_date } from "@/utils";
+import { get_published_blog_posts } from "@/utils/collections";
 
 export async function getStaticPaths() {
-  const posts = (await getCollection("blog")).filter(
-    (post) => !post.data.draft,
-  );
+  const posts = await get_published_blog_posts();
   return posts.map((post) => ({
     params: { id: post.id },
     props: { post },
@@ -46,24 +45,26 @@ const { Content } = await render(post);
     <h1 class="mt-16 text-4xl leading-tight font-bold break-all sm:mt-32">
       {post.data.title}
     </h1>
-    <ul class="mt-8 flex flex-wrap gap-2" aria-label="tags">
-      {
-        post.data.tags.map((tag) => (
-          <li class="inline-flex items-center rounded-md bg-gray-400/10 px-2 py-1 text-xs font-medium text-gray-300">
-            {tag}
-          </li>
-        ))
-      }
-    </ul>
+    {
+      post.data.tags && post.data.tags.length > 0 && (
+        <ul class="mt-8 flex flex-wrap gap-2" aria-label="tags">
+          {post.data.tags.map((tag) => (
+            <li class="inline-flex items-center rounded-md bg-gray-400/10 px-2 py-1 text-xs font-medium text-gray-300">
+              {tag}
+            </li>
+          ))}
+        </ul>
+      )
+    }
     <div class="mt-10 flex flex-col gap-1 text-sm">
-      <time datetime={post.data.publication_date.toString()}>
+      <time datetime={post.data.publication_date.toISOString()}>
         {format_date(post.data.publication_date)}
       </time>
       {
         post.data.revision_date && (
           <span class="italic">
             Modified:
-            <time datetime={post.data.revision_date.toString()}>
+            <time datetime={post.data.revision_date.toISOString()}>
               {format_date(post.data.revision_date)}
             </time>
           </span>
@@ -73,7 +74,7 @@ const { Content } = await render(post);
     <Divider class="mt-16" />
   </div>
   <article
-    class="prose prose-code:font-mono prose-invert prose-slate prose-a:hover:text-gray-500/50 sm:prose-xl mx-auto mt-16 max-w-3xl sm:mt-24"
+    class="prose prose-code:font-mono prose-invert prose-slate prose-a:hover:text-accent-bright sm:prose-xl mx-auto mt-16 max-w-3xl sm:mt-24"
   >
     <Content />
   </article>

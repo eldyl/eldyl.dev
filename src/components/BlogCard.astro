@@ -21,13 +21,22 @@ const { title, slug, date, description } = Astro.props;
     <CardTitle href={`/blog/${slug}`}>
       {title}
     </CardTitle>
-    <CardEyebrow as="time" dateTime={date} class="md:hidden" decorate>
+    <CardEyebrow
+      as="time"
+      dateTime={date.toISOString()}
+      class="md:hidden"
+      decorate
+    >
       {format_date(date)}
     </CardEyebrow>
     <CardDescription>{description}</CardDescription>
     <CardCta>Read article</CardCta>
   </Card>
-  <CardEyebrow as="time" dateTime={date} class="mt-1 max-md:hidden">
+  <CardEyebrow
+    as="time"
+    dateTime={date.toISOString()}
+    class="mt-1 max-md:hidden"
+  >
     {format_date(date)}
   </CardEyebrow>
 </article>

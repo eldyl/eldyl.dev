@@ -1,6 +1,7 @@
 import { z } from "astro/zod";
 
 const ProjectEntrySchema = z.object({
+  order: z.number(),
   title: z.string(),
   abbreviation: z.string().min(1).max(3),
   href: z.url(),
@@ -11,7 +12,8 @@ const ProjectEntrySchema = z.object({
 type ProjectEntry = z.infer<typeof ProjectEntrySchema>;
 
 const TechEntrySchema = z.object({
-  title: z.string(),
+  order: z.number(),
+  title: z.string().nonempty(),
   purpose: z.string().optional(),
   href: z.url().optional(),
   location: z.string().optional(),

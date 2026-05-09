@@ -1,7 +1,7 @@
 ---
 import { normalize_path } from "@/utils";
 
-const path = Astro.url.pathname as string;
+const path = Astro.url.pathname;
 const segments = path.slice(1).split("/").filter(Boolean);
 const pages = segments.map((segment, index) => {
   const href = `/${segments.slice(0, index + 1).join("/")}`;

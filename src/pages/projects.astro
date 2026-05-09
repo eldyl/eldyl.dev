@@ -5,7 +5,9 @@ import Layout from "@/layouts/Layout.astro";
 import GridList from "@/components/GridList.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
 
-const projects = await getCollection("projects");
+const projects = (await getCollection("projects")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
 ---
 
 <Layout h1="Projects">

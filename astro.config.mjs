@@ -41,6 +41,10 @@ export default defineConfig({
 
   markdown: {
     remarkPlugins: [[remarkToc, { heading: "toc", maxDepth: 3 }]],
+    remarkRehype: {
+      footnoteLabel: "Footnotes",
+      footnoteBackLabel: "Back to reference 1",
+    },
     rehypePlugins: [
       rehypeSlug,
       [

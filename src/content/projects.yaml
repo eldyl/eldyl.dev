@@ -1,4 +1,5 @@
-- id: 0
+- id: restart-that-thang
+  order: 0
   title: restart-that-thang
   abbreviation: RTT
   href: https://github.com/eldyl/restart-that-thang
@@ -9,7 +10,8 @@
     based on dependency graphs, health monitoring, intervals, and scheduled
     times with label-based configuration.
 
-- id: 1
+- id: dsd-util
+  order: 1
   title: dsd-util
   abbreviation: DSU
   href: https://github.com/eldyl/dsd-util
@@ -19,7 +21,8 @@
     A CLI utility for managing docker-stack-deploy instances. Handles container
     logs, image updates, restarts, stats, and bootstrapping.
 
-- id: 2
+- id: workspacinator
+  order: 2
   title: workspacinator
   abbreviation: WSR
   href: https://github.com/eldyl/workspacinator.wezterm
@@ -29,7 +32,8 @@
     A WezTerm plugin that generates workspaces from your favorite directories,
     SSH domains, and currently active sessions. All in one fuzzy finder.
 
-- id: 3
+- id: dotfiles
+  order: 3
   title: .dotfiles
   abbreviation: .DF
   href: https://github.com/eldyl/.dotfiles
@@ -38,7 +42,8 @@
   description:
     "My development environment: Arch Linux, NeoVim, WezTerm, and more."
 
-- id: 4
+- id: homepage
+  order: 4
   title: homepage
   abbreviation: HP
   href: https://github.com/gethomepage/homepage

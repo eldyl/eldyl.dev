@@ -2,6 +2,57 @@ import js from "@eslint/js";
 import eslintPluginAstro from "eslint-plugin-astro";
 import tseslint from "typescript-eslint";
 
+const tsRules = {
+  "@typescript-eslint/no-unused-vars": [
+    "error",
+    {
+      argsIgnorePattern: "^_",
+      varsIgnorePattern: "^_",
+      caughtErrorsIgnorePattern: "^_",
+    },
+  ],
+
+  "@typescript-eslint/consistent-type-imports": [
+    "error",
+    { prefer: "type-imports", fixStyle: "inline-type-imports" },
+  ],
+
+  "@typescript-eslint/no-floating-promises": "error",
+
+  "@typescript-eslint/require-await": "error",
+
+  "@typescript-eslint/no-misused-promises": [
+    "error",
+    { checksVoidReturn: false },
+  ],
+
+  "@typescript-eslint/prefer-nullish-coalescing": "error",
+
+  "@typescript-eslint/prefer-optional-chain": "warn",
+
+  "@typescript-eslint/ban-ts-comment": [
+    "error",
+    {
+      "ts-expect-error": "allow-with-description",
+      "ts-ignore": true,
+      "ts-nocheck": true,
+    },
+  ],
+
+  "@typescript-eslint/no-empty-object-type": [
+    "error",
+    { allowInterfaces: "with-single-extends" },
+  ],
+
+  "@typescript-eslint/no-unnecessary-condition": "warn",
+
+  "@typescript-eslint/switch-exhaustiveness-check": "error",
+
+  "@typescript-eslint/return-await": ["error", "in-try-catch"],
+
+  "@typescript-eslint/array-type": ["error", { default: "array-simple" }],
+};
+
 export default [
   {
     ignores: [
@@ -25,59 +76,23 @@ export default [
         tsconfigRootDir: import.meta.dirname,
       },
     },
-    rules: {
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        {
-          argsIgnorePattern: "^_",
-          varsIgnorePattern: "^_",
-          caughtErrorsIgnorePattern: "^_",
-        },
-      ],
-
-      "@typescript-eslint/consistent-type-imports": [
-        "error",
-        { prefer: "type-imports", fixStyle: "inline-type-imports" },
-      ],
-
-      "@typescript-eslint/no-floating-promises": "error",
-
-      "@typescript-eslint/require-await": "error",
-
-      "@typescript-eslint/no-misused-promises": [
-        "error",
-        { checksVoidReturn: false },
-      ],
-
-      "@typescript-eslint/prefer-nullish-coalescing": "warn",
-
-      "@typescript-eslint/prefer-optional-chain": "warn",
-
-      "@typescript-eslint/ban-ts-comment": [
-        "error",
-        {
-          "ts-expect-error": "allow-with-description",
-          "ts-ignore": true,
-          "ts-nocheck": true,
-        },
-      ],
-
-      "@typescript-eslint/no-empty-object-type": [
-        "error",
-        { allowInterfaces: "with-single-extends" },
-      ],
-
-      "@typescript-eslint/no-unnecessary-condition": "warn",
-
-      "@typescript-eslint/switch-exhaustiveness-check": "error",
-
-      "@typescript-eslint/return-await": ["error", "in-try-catch"],
-
-      "@typescript-eslint/array-type": ["error", { default: "array-simple" }],
-    },
+    rules: tsRules,
   },
 
   ...eslintPluginAstro.configs.recommended,
+
+  {
+    files: ["**/*.astro"],
+    languageOptions: {
+      parserOptions: {
+        project: true,
+        tsconfigRootDir: import.meta.dirname,
+        extraFileExtensions: [".astro"],
+      },
+    },
+    rules: tsRules,
+  },
+
   ...eslintPluginAstro.configs["jsx-a11y-strict"],
 
   {

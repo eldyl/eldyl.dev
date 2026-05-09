@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 
-import { base_path } from "./index.ts";
+import { base_path } from "@/utils";
 
 test("base_path properly parses root path only", () => {
   expect(base_path("/")).toBe("/");

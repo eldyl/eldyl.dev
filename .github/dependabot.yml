@@ -7,11 +7,17 @@ updates:
       day: "sunday"
     open-pull-requests-limit: 10
     groups:
+      cloudflare:
+        patterns:
+          - "wrangler"
+          - "@astrojs/cloudflare"
       astro:
         patterns:
           - "astro*"
           - "@astrojs/*"
           - "satori*"
+        exclude-patterns:
+          - "@astrojs/cloudflare"
       tailwind:
         patterns:
           - "tailwindcss"

@@ -18,7 +18,7 @@ export function base_path(path: string): string {
   if (path === "/") {
     return path;
   }
-  return path.split("/")[1];
+  return path.split("/")[1] ?? path;
 }
 
 // Returns a path without a trailing slash

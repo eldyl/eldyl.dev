@@ -1,4 +1,4 @@
-import type { APIRoute, GetStaticPaths } from "astro";
+import type { APIRoute, InferGetStaticPropsType } from "astro";
 import { getCollection } from "astro:content";
 import { satoriAstroOG } from "satori-astro";
 import { html } from "satori-html";
@@ -6,7 +6,7 @@ import { html } from "satori-html";
 import { DOMAIN, NAME } from "@/constants";
 import { get_published_blog_posts } from "@/utils/collections";
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths = async () => {
   const pages = await getCollection("pages");
   const posts = await get_published_blog_posts();
 
@@ -38,11 +38,15 @@ async function load_google_font(font: string, text: string) {
   const css = await (await fetch(url)).text();
 
   const resource = css.match(
-    /src: url\((.+)\) format\('(opentype|truetype)'\)/,
+    /src: url\((.+)\) format\('(opentype|truetype|woff2)'\)/,
   );
 
   if (resource) {
-    const response = await fetch(resource[1]);
+    const src = resource[1];
+    if (!src) {
+      throw new Error("failed to extract font url from CSS");
+    }
+    const response = await fetch(src);
 
     if (response.status === 200) {
       return response.arrayBuffer();
@@ -52,7 +56,9 @@ async function load_google_font(font: string, text: string) {
   throw new Error("failed to load font data");
 }
 
-export const GET: APIRoute = async ({ props }) => {
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+export const GET: APIRoute<Props> = async ({ props }) => {
   const FONT_NAME = "JetBrains Mono";
   const USER_DOMAIN = "eldyl@dev";
   const OPEN_BRACKET = "[";
@@ -62,11 +68,8 @@ export const GET: APIRoute = async ({ props }) => {
   const TITLE_CHAR_LENGTH_CUTOFF = 30;
   const PATH_CHAR_LENGTH_CUTOFF = 29;
 
-  let { title, description, path } = props as {
-    title: string;
-    description: string;
-    path: string;
-  };
+  const { title, description } = props;
+  let { path } = props;
 
   const all_text = `${NAME}${DOMAIN}${USER_DOMAIN}${OPEN_BRACKET}${CLOSE_BRACKET}${CLOSE_ANGLE_BRACKET}${title}${description}${path}`;
 

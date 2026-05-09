@@ -5,7 +5,7 @@ import type { ComponentProps } from "astro/types";
 import { getCollection } from "astro:content";
 import { Icon } from "astro-icon/components";
 
-import { BASE_TEN, NAME } from "@/constants";
+import { NAME } from "@/constants";
 import Head from "@/components/Head.astro";
 import { base_path } from "@/utils";
 import { get_page_entry } from "@/utils/collections";
@@ -20,8 +20,7 @@ const pages = (await getCollection("pages")).sort(
   (a, b) => a.data.order.valueOf() - b.data.order.valueOf(),
 );
 const links = (await getCollection("links")).sort(
-  (a, b) =>
-    parseInt(a.id.valueOf(), BASE_TEN) - parseInt(b.id.valueOf(), BASE_TEN),
+  (a, b) => a.data.order - b.data.order,
 );
 
 const path = Astro.url.pathname;
@@ -67,11 +66,11 @@ const {
             pages.map((page) => (
               <a
                 href={page.data.href}
-                class={
-                  base_path(path) === base_path(page.data.href)
-                    ? "bg-accent-faded rounded px-2 text-shadow-cyan-200 hover:text-shadow-lg/40"
-                    : "px-2 text-shadow-cyan-200 hover:text-shadow-lg/40"
-                }
+                class:list={[
+                  "px-2 text-shadow-cyan-200 hover:text-shadow-lg/40",
+                  base_path(path) === base_path(page.data.href) &&
+                    "bg-accent-faded rounded",
+                ]}
               >
                 {page.id}
               </a>
@@ -88,8 +87,8 @@ const {
               >
                 <Icon
                   class="hover:text-accent"
-                  title={link.data.name}
-                  name={link.data.name}
+                  title={link.id}
+                  name={link.id}
                 />
               </a>
             ))

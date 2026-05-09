@@ -42,7 +42,7 @@ const pages = defineCollection({
 const links = defineCollection({
   loader: file("./src/content/links.yaml"),
   schema: z.object({
-    name: z.string(),
+    order: z.number(),
     href: z.url(),
   }),
 });

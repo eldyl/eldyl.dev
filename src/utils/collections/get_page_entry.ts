@@ -8,7 +8,7 @@ export function get_page_entry(
   path: string,
   pages: Array<CollectionEntry<"pages">>,
 ): CollectionEntry<"pages"> | null {
-  const page_entry = path !== "/" ? path.split("/")[1] : "about";
+  const page_entry = path === "/" ? "about" : (path.split("/")[1] ?? "about");
   if (EXCLUDED_DURING_PAGES_COLLECTION_VALIDATION.includes(page_entry)) {
     return null;
   }

@@ -26,7 +26,7 @@ const { title, purpose, href, location, description, icon } = Astro.props;
         />
       ) : (
         <span class="size-6 text-center font-mono font-semibold text-zinc-200">
-          {title[0]}
+          {title.charAt(0)}
         </span>
       )
     }

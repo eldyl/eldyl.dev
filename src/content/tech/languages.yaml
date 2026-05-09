@@ -1,4 +1,5 @@
-- id: 0
+- id: rust
+  order: 0
   title: Rust
   description: My favorite language. Fast, and memory safe.
   href: https://doc.rust-lang.org/book/
@@ -7,7 +8,8 @@
     name: "rust"
     color: "#000000"
 
-- id: 1
+- id: c
+  order: 1
   title: C
   href: https://www.iso.org/standard/82075.html
   description: For when I want to live dangerously.
@@ -16,7 +18,8 @@
     name: "c"
     color: "#A8B9CC"
 
-- id: 2
+- id: typescript
+  order: 2
   title: TypeScript
   href: https://www.typescriptlang.org/docs/
   description:
@@ -27,7 +30,8 @@
     name: "typescript"
     color: "#3178C6"
 
-- id: 3
+- id: java
+  order: 3
   title: Java
   href: https://docs.oracle.com/en/java/javase/
   description: It gets the job done.
@@ -36,7 +40,8 @@
     name: "java"
     color: "#0074BD"
 
-- id: 4
+- id: csharp
+  order: 4
   title: C#
   href: https://learn.microsoft.com/en-us/dotnet/csharp/
   description: Java++.
@@ -45,7 +50,8 @@
     name: "csharp"
     color: "#9B4F96"
 
-- id: 5
+- id: python
+  order: 5
   title: Python
   href: https://docs.python.org
   description: Script army knife.
@@ -54,7 +60,8 @@
     name: "python"
     color: "#3776AB"
 
-- id: 6
+- id: lua
+  order: 6
   title: Lua
   href: https://www.lua.org/docs.html
   description: Simple and fun. Great for configuration and embedding.
@@ -63,6 +70,7 @@
     name: "lua"
     color: "#2C2D72"
 
-- id: 7
+- id: wildcard
+  order: 7
   title: Wildcard
   description: Throw it at me, and I'll learn it.

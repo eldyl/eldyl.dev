@@ -1,4 +1,5 @@
-- slug: 0
+- id: arch-linux
+  order: 0
   title: Arch Linux
   purpose: Operating System
   description: I use Arch, btw.
@@ -8,7 +9,8 @@
     name: arch
     color: "#1793D1"
 
-- slug: 1
+- id: nixos
+  order: 1
   title: NixOS
   purpose: Operating System
   description: What even is Nix?
@@ -18,7 +20,8 @@
     name: nixos
     color: "#5277C3"
 
-- slug: 2
+- id: wezterm
+  order: 2
   title: WezTerm
   purpose: Terminal
   href: https://wezterm.org/
@@ -28,7 +31,8 @@
     name: wezterm
     color: "#4E49EE"
 
-- slug: 3
+- id: neovim
+  order: 3
   title: NeoVim
   purpose: Editor
   href: https://neovim.io/
@@ -38,7 +42,8 @@
     name: neovim
     color: "#57A143"
 
-- slug: 4
+- id: proxmox
+  order: 4
   title: Proxmox
   purpose: Homelab
   href: https://pve.proxmox.com/pve-docs/
@@ -48,7 +53,8 @@
     name: proxmox
     color: "#E57000"
 
-- slug: 5
+- id: truenas-scale
+  order: 5
   title: TrueNAS Scale
   purpose: Homelab
   href: https://www.truenas.com/docs/scale
@@ -58,7 +64,8 @@
     name: truenas
     color: "#0095D5"
 
-- slug: 6
+- id: debian
+  order: 6
   title: Debian
   purpose: Homelab
   href: https://www.debian.org/doc/
@@ -68,7 +75,8 @@
     name: debian
     color: "#A81D33"
 
-- slug: 7
+- id: docker
+  order: 7
   title: Docker
   purpose: Homelab
   href: https://docs.docker.com/

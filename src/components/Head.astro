@@ -59,6 +59,13 @@ const og_image_url = new URL(`/api/og/${og_slug}.png`, Astro.site);
       title: og_title,
       type: seo?.og?.type ?? "website",
       image: seo?.og?.image ?? og_image_url,
+      image_structured: {
+        url: seo?.og?.image ?? og_image_url,
+        width: 1200,
+        height: 630,
+        alt: seo?.og?.image_structured?.alt ?? `${title} — eldyl.dev`,
+        type: "image/png",
+      },
       optional: {
         ...seo?.og?.optional,
         description: seo?.og?.optional?.description ?? description,

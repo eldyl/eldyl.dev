@@ -47,7 +47,7 @@
     "satori-html": "^0.3.2",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.2.2",
-    "zod": "^4.3.6"
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

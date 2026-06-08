@@ -15,7 +15,7 @@
   },
   "type": "module",
   "version": "0.0.2",
-  "packageManager": "pnpm@10.29.2",
+  "packageManager": "pnpm@11.1.2",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "pnpm run telemetry",

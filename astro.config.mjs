@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig, envField } from "astro/config";
 import cloudflare from "@astrojs/cloudflare";
+import { unified } from "@astrojs/markdown-remark";
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 import playformCompress from "@playform/compress";
@@ -40,24 +41,26 @@ export default defineConfig({
   },
 
   markdown: {
-    remarkPlugins: [[remarkToc, { heading: "toc", maxDepth: 3 }]],
-    remarkRehype: {
-      footnoteLabel: "Footnotes",
-      footnoteBackLabel: "Back to reference 1",
-    },
-    rehypePlugins: [
-      rehypeSlug,
-      [
-        rehypeAutolinkHeadings,
-        {
-          behavior: "wrap",
-          properties: {
-            className: "no-underline",
-            "aria-label": "Link to this heading",
+    processor: unified({
+      remarkPlugins: [[remarkToc, { heading: "toc", maxDepth: 3 }]],
+      remarkRehype: {
+        footnoteLabel: "Footnotes",
+        footnoteBackLabel: "Back to reference 1",
+      },
+      rehypePlugins: [
+        rehypeSlug,
+        [
+          rehypeAutolinkHeadings,
+          {
+            behavior: "wrap",
+            properties: {
+              className: "no-underline",
+              "aria-label": "Link to this heading",
+            },
           },
-        },
+        ],
       ],
-    ],
+    }),
     shikiConfig: {
       theme: "tokyo-night",
     },

@@ -30,7 +30,26 @@ export default defineConfig({
     },
   },
 
-  integrations: [icon(), sitemap(), playformCompress()],
+  integrations: [
+    icon({
+      svgoOptions: {
+        multipass: true,
+        plugins: [
+          {
+            name: "preset-default",
+            params: {
+              overrides: {
+                cleanupNumericValues: { floatPrecision: 2 },
+                convertPathData: { floatPrecision: 2 },
+              },
+            },
+          },
+        ],
+      },
+    }),
+    sitemap(),
+    playformCompress(),
+  ],
 
   vite: {
     plugins: [tailwindcss()],

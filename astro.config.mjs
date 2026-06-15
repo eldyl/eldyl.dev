@@ -17,7 +17,7 @@ const { SITE_URL } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 // https://astro.build/config
 export default defineConfig({
   site: SITE_URL,
-  trailingSlash: "ignore",
+  trailingSlash: "always",
 
   env: {
     schema: {

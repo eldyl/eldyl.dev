@@ -21,15 +21,9 @@ export function base_path(path: string): string {
   return path.split("/")[1] ?? path;
 }
 
-// Returns a path without a trailing slash
+// Returns a path with a trailing slash
 export function normalize_path(path: string): string {
-  if (path.endsWith("/")) {
-    if (path.length === 1) {
-      return path;
-    }
-    return path.slice(0, -1);
-  }
-  return path;
+  return path.endsWith("/") ? path : `${path}/`;
 }
 
 // Appends a string to a given title that provides additional information.

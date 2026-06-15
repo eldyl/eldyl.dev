@@ -9,7 +9,7 @@
 
 - id: blog
   order: 1
-  href: /blog
+  href: /blog/
   title: Blog
   description:
     I enjoy writing about software development, Linux, and technology at large.
@@ -17,12 +17,12 @@
 
 - id: projects
   order: 2
-  href: /projects
+  href: /projects/
   title: Projects
   description: I love solving problems, and open source software.
 
 - id: uses
   order: 3
-  href: /uses
+  href: /uses/
   title: Uses
   description: A non-exhaustive list of some of the tools, and languages I use.

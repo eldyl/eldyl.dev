@@ -1,0 +1,8 @@
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" theme(reference);
+@import "./theme.css" theme(reference);
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
+@plugin "@tailwindcss/typography";
+
+@source "../pages/blog";

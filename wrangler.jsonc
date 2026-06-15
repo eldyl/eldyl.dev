@@ -11,4 +11,10 @@
       "custom_domain": true,
     },
   ],
+  "kv_namespaces": [
+    {
+      "binding": "SESSION",
+      "id": "aa2c83199bcb4b658c9f3e15e60873a4",
+    },
+  ],
 }

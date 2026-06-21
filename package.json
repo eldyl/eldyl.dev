@@ -68,6 +68,6 @@
     "typescript-eslint": "^8.61.1",
     "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.1.8",
-    "wrangler": "^4.102.0"
+    "wrangler": "^4.103.0"
   }
 }

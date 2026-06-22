@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
-    "@astrojs/cloudflare": "^13.7.0",
+    "@astrojs/cloudflare": "^14.0.0",
     "@astrojs/markdown-remark": "^7.2.0",
     "@astrojs/sitemap": "^3.7.3",
     "@astrojs/ts-plugin": "^1.10.9",
@@ -68,6 +68,6 @@
     "typescript-eslint": "^8.61.1",
     "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.1.8",
-    "wrangler": "^4.102.0"
+    "wrangler": "^4.103.0"
   }
 }

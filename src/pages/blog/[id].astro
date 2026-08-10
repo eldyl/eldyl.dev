@@ -65,7 +65,7 @@ const { Content } = await render(post);
       {
         post.data.revision_date && (
           <span class="italic">
-            Modified:
+            Modified:{" "}
             <time datetime={post.data.revision_date.toISOString()}>
               {format_date(post.data.revision_date)}
             </time>

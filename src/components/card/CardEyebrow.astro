@@ -1,26 +1,41 @@
 ---
-interface Props {
-  as?:
-    | "div"
-    | "span"
-    | "p"
-    | "section"
-    | "h1"
-    | "h2"
-    | "h3"
-    | "h4"
-    | "h5"
-    | "h6";
-  decorate?: boolean;
-}
+import type { Polymorphic } from "astro/types";
 
-const { as = "p", class: class_name, decorate = false, ...rest } = Astro.props;
-const component_class =
-  `relative z-10 order-first mb-3 flex items-center text-sm text-zinc-500 ${decorate && "pl-3.5"} ${class_name}`.trim();
-const Component = as;
+type EyebrowTag =
+  | "div"
+  | "span"
+  | "p"
+  | "section"
+  | "time"
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "h5"
+  | "h6";
+
+type Props<Component extends EyebrowTag = "p"> = Polymorphic<{
+  as: Component;
+}> & {
+  decorate?: boolean;
+};
+
+const {
+  as: Component = "p",
+  class: class_name,
+  decorate = false,
+  ...props
+} = Astro.props;
 ---
 
-<Component class={component_class} {...rest}>
+<Component
+  class:list={[
+    "relative z-10 order-first mb-3 flex items-center text-sm text-zinc-500",
+    decorate && "pl-3.5",
+    class_name,
+  ]}
+  {...props}
+>
   {
     decorate && (
       <span

@@ -1,17 +1,21 @@
 ---
-interface Props {
-  // HTML element type
-  as?:
-    | "div"
-    | "span"
-    | "p"
-    | "section"
-    | "h1"
-    | "h2"
-    | "h3"
-    | "h4"
-    | "h5"
-    | "h6";
+import type { Polymorphic } from "astro/types";
+
+type AnimateTypingTag =
+  | "div"
+  | "span"
+  | "p"
+  | "section"
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "h5"
+  | "h6";
+
+type Props<Component extends AnimateTypingTag = "div"> = Polymorphic<{
+  as: Component;
+}> & {
   // Rendered text
   text: string;
   // Color of cursor - set with tailwind bg color: bg-gray-200
@@ -22,26 +26,24 @@ interface Props {
   typing_delay?: number;
   // Speed of cursor blink - lower is faster
   blink_speed?: number;
-}
+};
 
 const {
-  as = "div",
+  as: Component = "div",
   text,
   cursor_color = "bg-gray-200",
   class: class_name,
   start_delay = 0,
   typing_delay = 1,
   blink_speed = 10,
-  ...rest
+  ...props
 } = Astro.props;
 
 const typing_delay_seconds = typing_delay * 0.1;
 const blink_speed_seconds = blink_speed * 0.1;
-
-const Component = as;
 ---
 
-<Component class={class_name} {...rest}>
+<Component class={class_name} {...props}>
   <span class={`relative inline-block min-w-[${text.length + 1}ch]`}>
     <span class="invisible" aria-hidden="true">&nbsp;</span>
     <span class="absolute top-0 left-0" aria-hidden="true">

@@ -1,28 +1,41 @@
 ---
+import type { Polymorphic } from "astro/types";
+
 import CardLink from "./CardLink.astro";
 
-interface Props {
-  as?:
-    | "div"
-    | "span"
-    | "p"
-    | "section"
-    | "h1"
-    | "h2"
-    | "h3"
-    | "h4"
-    | "h5"
-    | "h6";
-  href?: string;
-}
+type CardTitleTag =
+  | "div"
+  | "span"
+  | "p"
+  | "section"
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "h5"
+  | "h6";
 
-const { as = "h2", href = "", class: class_name, ...rest } = Astro.props;
-const component_class =
-  `text-base font-semibold tracking-tight text-zinc-100 break-all ${class_name}`.trim();
-const Component = as;
+type Props<Component extends CardTitleTag = "h2"> = Polymorphic<{
+  as: Component;
+}> & {
+  href?: string;
+};
+
+const {
+  as: Component = "h2",
+  href = "",
+  class: class_name,
+  ...props
+} = Astro.props;
 ---
 
-<Component class={component_class} {...rest}>
+<Component
+  class:list={[
+    "text-base font-semibold tracking-tight break-all text-zinc-100",
+    class_name,
+  ]}
+  {...props}
+>
   {
     href ? (
       <CardLink href={href}>

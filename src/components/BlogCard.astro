@@ -23,7 +23,7 @@ const { title, slug, date, description } = Astro.props;
     </CardTitle>
     <CardEyebrow
       as="time"
-      dateTime={date.toISOString()}
+      datetime={date.toISOString()}
       class="md:hidden"
       decorate
     >
@@ -34,7 +34,7 @@ const { title, slug, date, description } = Astro.props;
   </Card>
   <CardEyebrow
     as="time"
-    dateTime={date.toISOString()}
+    datetime={date.toISOString()}
     class="mt-1 max-md:hidden"
   >
     {format_date(date)}
